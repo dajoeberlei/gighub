@@ -1,0 +1,28 @@
+server {
+    listen      *:80;
+    server_name gighub.de gighub.local;
+
+    location / {
+        if (-f $request_filename) {
+            break;
+        }
+
+        if (!-e $request_filename) {
+            rewrite ^(.+)$ /index.php$1 last;
+            break;
+        }
+    }
+
+    location ~ \.php {
+        fastcgi_pass   unix:/var/run/php5-fpm.sock;
+        fastcgi_index  index.php;
+        include        fastcgi_params;
+
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    }
+
+
+    index "index.php";
+    root "/var/www/gighub/web";
+}
+

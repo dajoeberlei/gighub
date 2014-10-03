@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "vagrant/vagrant"
     ansible.playbook = "vagrant/provision.yml"
+    ansible.limit = "all"
   end
 
   config.vm.synced_folder ".", "/var/www/gighub", :nfs => true

@@ -1,0 +1,8 @@
+[all]
+33.33.33.47 ansible_ssh_host=33.33.33.47 ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key ansible_ssh_user=vagrant
+
+[all:vars]
+symfony_env=dev
+mysql_database=gighub
+mysql_root_password=ciex7ePh
+mysql_app_password=ciex7ePh
