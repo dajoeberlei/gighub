@@ -15,14 +15,6 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(function ($container) {
-            $container->loadFromExtension('framework', array(
-                'secret' => 'some secret here',
-                'router' => array(
-                    'resource' => '%kernel.root_dir%/config/routing.yml'
-                ),
-                'templating' => array('engines' => array('twig'))
-            ));
-        });
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 }
