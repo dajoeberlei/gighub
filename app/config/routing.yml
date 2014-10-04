@@ -1,3 +1,7 @@
+gighub_application:
+    resource: "@GighubApplicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 hello:
   pattern: /
   defaults:

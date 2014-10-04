@@ -1,0 +1,4 @@
+services:
+#    gighub_application.example:
+#        class: Gighub\ApplicationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
