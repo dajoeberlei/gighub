@@ -1,3 +1,7 @@
 gighub_application_homepage:
     path:     /hello/{name}
     defaults: { _controller: GighubApplicationBundle:Default:index }
+
+random:
+        path:     /random/{limit}
+        defaults: { _controller: GighubApplicationBundle:Random:index }
