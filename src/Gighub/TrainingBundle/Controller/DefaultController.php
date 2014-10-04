@@ -8,6 +8,6 @@ class DefaultController
 {
     public function helloAction()
     {
-        return new Response('Hello World!');
+        return new Response('<body>Hello World!</body>');
     }
 }

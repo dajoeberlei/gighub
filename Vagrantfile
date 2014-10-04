@@ -12,4 +12,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.synced_folder ".", "/var/www/gighub", :nfs => true
+
+  config.vm.provider :virtualbox do |vb|
+        # Properly configure the vm to use the available amount of cores
+        vb.customize ["modifyvm", :id, "--cpus", `#{RbConfig::CONFIG['host_os'] =~ /darwin/ ? 'sysctl -n hw.ncpu' : 'nproc'}`.chomp]
+        vb.customize ["modifyvm", :id, "--ioapic", "on"]
+
+        vb.customize ["modifyvm", :id, "--memory", 2048]
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
 end
