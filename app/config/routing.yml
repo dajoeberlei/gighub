@@ -1,0 +1,4 @@
+hello:
+  pattern: /
+  defaults:
+    _controller: "Gighub\TrainingBundle\Controller\DefaultController::helloAction"
