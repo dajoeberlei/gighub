@@ -1,10 +1,10 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
+    database_host:     localhost
+    database_port:     3106
+    database_name:     gighub
     database_user:     root
-    database_password: ~
+    database_password: ciex7ePh
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt

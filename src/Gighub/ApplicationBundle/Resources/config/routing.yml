@@ -1,7 +1,19 @@
 gighub_application_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: GighubApplicationBundle:Default:index }
+    path:     /hello/{firstName}/{lastName}
+    defaults: { _controller: GighubApplicationBundle:Default:index}
 
 random:
         path:     /random/{limit}
         defaults: { _controller: GighubApplicationBundle:Random:index }
+
+createShowDate:
+        path:     /showdate/create/
+        defaults: { _controller: GighubApplicationBundle:ShowDate:create }
+
+showShowDate:
+        path:     /showdate/show/{id}
+        defaults: { _controller: GighubApplicationBundle:ShowDate:show }
+
+updateShowDate:
+        path:     /showdate/update/{id}/{updatedStatus}
+        defaults: { _controller: GighubApplicationBundle:ShowDate:update }
