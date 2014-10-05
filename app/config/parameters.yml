@@ -4,7 +4,6 @@ parameters:
     database_port:     3106
     database_name:     gighub
     database_user:     root
-    database_password: ciex7ePh
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt

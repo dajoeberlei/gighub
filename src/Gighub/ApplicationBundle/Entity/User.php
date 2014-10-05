@@ -16,7 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User implements UserInterface
 {
-
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id

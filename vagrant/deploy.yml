@@ -1,0 +1,30 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+      - name: "Clone Project"
+        git: >
+            repo=https://github.com/dayjow/gighub.git
+            dest=/var/www/gighub
+            update=yes
+
+      - name: "Generate .env file"
+        template: >
+            src=templates/env
+            dest=/var/www/gighub/.env
+
+      - name: "Update Composer Dependencies"
+        command: >
+            composer install
+            chdir=/var/www/github
+
+      - name: "Update Database"
+        command: >
+            php app/console doctrine:schema:update --force
+            chdir=/var/www/github
+
+      - name: "Change file rights"
+        file: >
+            path=/var/www/gighub
+            owner=www-data
+            group=www-data

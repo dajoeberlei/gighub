@@ -1,0 +1,4 @@
+SYMFONY_ENV={{ symfony_env }}
+SYMFONY__FACEBOOK_CLIENT_ID={{ facebook_client_id }}
+SYMFONY__FACEBOOK_CLIENT_SECRET={{ facebook_client_secret }}
+SYMFONY__DATABASE_PASSWORD={{ mysql_root_password }}
