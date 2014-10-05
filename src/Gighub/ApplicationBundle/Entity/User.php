@@ -21,14 +21,6 @@ class User implements UserInterface
     protected $id;
 
     /**
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     protected $username;
@@ -38,6 +30,13 @@ class User implements UserInterface
      */
     protected $password;
 
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getRoles()
     {

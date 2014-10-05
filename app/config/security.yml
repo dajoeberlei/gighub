@@ -1,13 +1,20 @@
 hwi_oauth:
     firewall_name: secured_area
+    http_client:
+      timeout: 30
     resource_owners:
         facebook:
             type:           facebook
             client_id:      %facebook_client_id%
             client_secret:  %facebook_client_secret%
+            scope:          "email"
 
 security:
     firewalls:
+        dev:
+            pattern: ^/(_profiler|_wdt)
+            anonymous: ~
+
         secured_area:
             pattern:   ^/
             anonymous: ~
@@ -19,14 +26,21 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    service: hwi_oauth.user.provider.entity
+                    orm:
+                     class: Gighub\ApplicationBundle\Entity\User
+                     properties:
+                      facebook: username
 
     access_control:
+        - { path: ^/(_profiler|_wdt), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/connect, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY}
 
     providers:
         users:
             entity: { class: "Gighub\ApplicationBundle\Entity\User", property: username }
+
 
     encoders:
         Gighub\ApplicationBundle\Entity\User: bcrypt
