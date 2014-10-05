@@ -5,6 +5,29 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    static public function createFromEnvironment()
+    {
+        $envFile = __DIR__ . '/../.env';
+
+        if (!file_exists($envFile)) {
+            throw new \RuntimeException("Gighub requires .env file to run.");
+        }
+
+        $envLines = file($envFile);
+
+        foreach ($envLines as $envLine) {
+            list($name, $value) = explode("=", $envLine);
+
+            $_SERVER[trim($name)] = trim($value);
+        }
+
+        if (!isset($_SERVER['SYMFONY_ENV'])) {
+            $_SERVER['SYMFONY_ENV'] = 'prod';
+        }
+
+        return new AppKernel($_SERVER['SYMFONY_ENV'], ($_SERVER['SYMFONY_ENV'] != 'prod'));
+    }
+
     public function registerBundles()
     {
         $bundles = array(
@@ -13,6 +36,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Gighub\ApplicationBundle\GighubApplicationBundle(),
         );
 

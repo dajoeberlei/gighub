@@ -7,4 +7,13 @@ hello:
   defaults:
     _controller: "Gighub\TrainingBundle\Controller\DefaultController::helloAction"
 
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
 
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+facebook_login:
+    pattern: /login/check-facebook
