@@ -26,7 +26,7 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    id: gighub_application.auto_create_entity_user_provider
+                    service: gighub_application.auto_create_entity_user_provider
 
     access_control:
         - { path: ^/(_profiler|_wdt), roles: IS_AUTHENTICATED_ANONYMOUSLY }

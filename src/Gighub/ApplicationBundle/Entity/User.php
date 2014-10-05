@@ -5,9 +5,13 @@ namespace Gighub\ApplicationBundle\Entity;
 
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ *
+ * @UniqueEntity("email")
+ * @UniqueEntity("username")
  * @ORM\Entity
  */
 class User implements UserInterface
@@ -21,7 +25,7 @@ class User implements UserInterface
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      */
     protected $username;
 
@@ -30,10 +34,7 @@ class User implements UserInterface
      */
     protected $email;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $password;
+
 
     /**
      * @return integer
@@ -58,8 +59,11 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        return $this->password;
+        return "";
     }
+
+
+
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -82,6 +86,15 @@ class User implements UserInterface
     public function getUsername()
     {
         return $this->username;
+    }
+
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
     }
 
     /**
@@ -114,4 +127,7 @@ class User implements UserInterface
     {
         $this->email = $email;
     }
+
+
+
 }
