@@ -26,6 +26,11 @@ class User implements UserInterface
     protected $username;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $email;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $password;
@@ -88,5 +93,25 @@ class User implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+    
+    /**
+     * Get email.
+     *
+     * @return email.
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
+    /**
+     * Set email.
+     *
+     * @param email the value to set.
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }
