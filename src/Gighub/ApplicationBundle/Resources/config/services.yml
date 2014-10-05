@@ -1,4 +1,7 @@
 services:
-#    gighub_application.example:
-#        class: Gighub\ApplicationBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    gighub_application.auto_create_entity_user_provider:
+        class: "Gighub\ApplicationBundle\Security\AutoCreateEntityUserProvider"
+        arguments:
+            - "@doctrine"
+            - "Gighub\ApplicationBundle\Entity\User"
+            - {"facebook": "username"}
