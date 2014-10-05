@@ -8,7 +8,8 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "hwi/oauth-bundle": "0.4.*@dev",
-        "vlucas/phpdotenv": "@stable"
+        "vlucas/phpdotenv": "@stable",
+        "mopa/bootstrap-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

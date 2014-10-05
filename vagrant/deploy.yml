@@ -16,15 +16,16 @@
       - name: "Update Composer Dependencies"
         command: >
             composer install
-            chdir=/var/www/github
+            chdir=/var/www/gighub
 
       - name: "Update Database"
         command: >
             php app/console doctrine:schema:update --force
-            chdir=/var/www/github
+            chdir=/var/www/gighub
 
       - name: "Change file rights"
         file: >
             path=/var/www/gighub
             owner=www-data
             group=www-data
+            recurse=yes

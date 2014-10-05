@@ -40,3 +40,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
         naming_strategy:      doctrine.orm.naming_strategy.underscore
+
+#bootstrap Configuration
+mopa_bootstrap:
+    form: ~  # Adds twig form theme  support

@@ -54,7 +54,7 @@
           dest=/usr/local/bin/composer
 
     - name: "Make Composer executable"
-      file: path=/usr/local/bin/composer mode=u+x
+      file: path=/usr/local/bin/composer mode=0755
 
     - name: Install MySQL Server
       apt: pkg={{ item }} state=present
