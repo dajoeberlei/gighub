@@ -2,6 +2,12 @@
 - hosts: all
   sudo: yes
   tasks:
+    - name: "Install Dev Packages"
+      apt: pkg={{ item }}
+      with_items:
+        - curl
+        - git
+
     - name: "Install nginx"
       apt: pkg=nginx
 
@@ -41,6 +47,14 @@
       with_items:
         - cli
         - fpm
+
+    - name: "Install Composer" 
+      get_url: >
+          url=https://getcomposer.org/composer.phar
+          dest=/usr/local/bin/composer
+
+    - name: "Make Composer executable"
+      file: path=/usr/local/bin/composer mode=u+x
 
     - name: Install MySQL Server
       apt: pkg={{ item }} state=present
