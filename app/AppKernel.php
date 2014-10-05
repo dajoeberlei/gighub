@@ -7,23 +7,8 @@ class AppKernel extends Kernel
 {
     static public function createFromEnvironment()
     {
-        $envFile = __DIR__ . '/../.env';
-
-        if (!file_exists($envFile)) {
-            throw new \RuntimeException("Gighub requires .env file to run.");
-        }
-
-        $envLines = file($envFile);
-
-        foreach ($envLines as $envLine) {
-            list($name, $value) = explode("=", $envLine);
-
-            $_SERVER[trim($name)] = trim($value);
-        }
-
-        if (!isset($_SERVER['SYMFONY_ENV'])) {
-            $_SERVER['SYMFONY_ENV'] = 'prod';
-        }
+        Dotenv::load(__DIR__ . '/..');
+        Dotenv::required(array('SYMFONY_ENV', 'SYMFONY__FACEBOOK_CLIENT_ID', 'SYMFONY__FACEBOOK_CLIENT_SECRET'));
 
         return new AppKernel($_SERVER['SYMFONY_ENV'], ($_SERVER['SYMFONY_ENV'] != 'prod'));
     }
