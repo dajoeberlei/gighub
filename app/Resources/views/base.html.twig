@@ -16,7 +16,7 @@
 <body style="padding-top: 70px">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{ currentUser }}</a></p>
+        <p class="navbar-text navbar-right"><img src="http://graph.facebook.com/{{ currentUser.username }}/picture" height="32px" width="32px"> <a style="font-size: 16px" href="http://www.facebook.com/" class="navbar-link" target="_blank">{{ currentUser.realName }}</a></p>
     </div>
 </nav>
 {% block body %}

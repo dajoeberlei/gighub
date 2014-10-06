@@ -8,6 +8,9 @@ hwi_oauth:
             client_id:      %facebook_client_id%
             client_secret:  %facebook_client_secret%
             scope:          "email"
+            paths:
+                            email:          email
+                            profilepicture: picture.data.url
 
 security:
     firewalls:

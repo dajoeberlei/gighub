@@ -38,7 +38,7 @@ class ShowDateController extends Controller
     {
 
 
-        var_dump($this->getUser());die;
+        $user = $this->getUser();
         $entityManager = $this->get("doctrine.orm.entity_manager");
         $repository = $entityManager->getRepository(ShowDate::class);
         $showDate = $repository->find($id);
@@ -52,6 +52,20 @@ class ShowDateController extends Controller
 
 
         return $this->render('GighubApplicationBundle:ShowDate:show.html.twig', array('showDate' => $showDate, 'currentUser' => $user));
+
+    }
+
+    public function listAction()
+    {
+
+
+        $user = $this->getUser();
+        $entityManager = $this->get("doctrine.orm.entity_manager");
+        $repository = $entityManager->getRepository(ShowDate::class);
+
+
+
+        return $this->render('GighubApplicationBundle:ShowDate:list.html.twig', array('currentUser' => $user));
 
     }
 

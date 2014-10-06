@@ -23,6 +23,7 @@ class AutoCreateEntityUserProvider extends EntityUserProvider
             $user->setRealName($response->getRealName());
             $user->setProfilePicture($response->getProfilePicture());
 
+
             $this->em->flush();
 
             return $user;
