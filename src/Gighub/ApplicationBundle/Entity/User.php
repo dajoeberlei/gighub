@@ -6,6 +6,8 @@ namespace Gighub\ApplicationBundle\Entity;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use HWI\Bundle\OAuthBundle\Security\Core\User\EntityUserProvider;
+use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,55 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     protected $email;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $realName;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $profilePicture;
+
+    public function __construct()
+    {
+
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param mixed $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRealName()
+    {
+        return $this->realName;
+    }
+
+    /**
+     * @param mixed $realName
+     */
+    public function setRealName($realName)
+    {
+        $this->realName = $realName;
+    }
+
 
 
 

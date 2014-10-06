@@ -12,8 +12,13 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     </head>
-<body>
 
+<body style="padding-top: 70px">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{ currentUser }}</a></p>
+    </div>
+</nav>
 {% block body %}
 
 <div class="container">

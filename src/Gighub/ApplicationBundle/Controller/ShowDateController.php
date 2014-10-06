@@ -3,11 +3,14 @@
 namespace Gighub\ApplicationBundle\Controller;
 
 use Gighub\ApplicationBundle\Entity\ShowDate;
+use Gighub\ApplicationBundle\Entity\User;
 use Gighub\ApplicationBundle\Form\CreateShowDateType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
+use HWI\Bundle\OAuthBundle\Security\Core\User\EntityUserProvider;
+use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 
 class ShowDateController extends Controller
 {
@@ -33,6 +36,9 @@ class ShowDateController extends Controller
 
     public function showAction($id)
     {
+
+
+        var_dump($this->getUser());die;
         $entityManager = $this->get("doctrine.orm.entity_manager");
         $repository = $entityManager->getRepository(ShowDate::class);
         $showDate = $repository->find($id);
@@ -43,7 +49,9 @@ class ShowDateController extends Controller
             );
         }
 
-        return $this->render('GighubApplicationBundle:ShowDate:show.html.twig', array('showDate' => $showDate));
+
+
+        return $this->render('GighubApplicationBundle:ShowDate:show.html.twig', array('showDate' => $showDate, 'currentUser' => $user));
 
     }
 
