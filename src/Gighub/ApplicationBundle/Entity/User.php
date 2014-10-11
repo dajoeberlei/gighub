@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     protected $profilePicture;
 
+    /**
+     * @ORM\Column(type="class", nullable=true)
+     */
+    protected $band;
+
     public function __construct()
     {
 
