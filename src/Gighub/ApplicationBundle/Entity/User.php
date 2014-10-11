@@ -46,13 +46,12 @@ class User implements UserInterface
     protected $profilePicture;
 
     /**
-     * @ORM\Column(type="class", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    protected $band;
+    protected $artist;
 
     public function __construct()
     {
-
 
     }
 
@@ -183,6 +182,21 @@ class User implements UserInterface
         $this->email = $email;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @param mixed $artist
+     */
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+    }
 
 
 }

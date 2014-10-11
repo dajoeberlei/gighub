@@ -2,9 +2,8 @@
 
 namespace Gighub\ApplicationBundle\Controller;
 
-use Gighub\ApplicationBundle\Entity\ShowDate;
 use Gighub\ApplicationBundle\Entity\User;
-use Gighub\ApplicationBundle\Form\CreateShowDateType;
+use Gighub\ApplicationBundle\Form\CreateUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,7 +70,14 @@ class UserController extends Controller
 
     public function homeAction()
     {
-        $user = $this->getUser();
+        $currentUser = $this->getUser();
+        $artist = $currentUser->getArtist();
+
+        if(!$artist) {
+            return $this->render('GighubApplicationBundle:Artist:create.html.twig', array("currentUser" => $currentUser));
+        } else {
+            return $this->render('GighubApplicationBundle:Artist:show.html.twig', array("artist" => $artist, "currentUser" => $currentUser));
+        }
 
     }
 

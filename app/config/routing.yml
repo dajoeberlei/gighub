@@ -5,7 +5,7 @@ gighub_application:
 hello:
   pattern: /
   defaults:
-    _controller: "Gighub\ApplicationBundle\Controller\ShowDateController::listAction"
+    _controller: "Gighub\ApplicationBundle\Controller\UserController::homeAction"
 
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
