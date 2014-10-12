@@ -25,8 +25,7 @@ class ArtistController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            echo count($artist->getMembers()->get(0)->getArtists());
-            die();
+
             $entityManager = $this->get("doctrine.orm.entity_manager");
             $entityManager->persist($artist);
             $entityManager->flush();
@@ -56,6 +55,21 @@ class ArtistController extends Controller
 
         return $this->render('GighubApplicationBundle:Artist:show.html.twig', array('artist' => $artist, 'currentUser' => $currentUser));
 
+    }
+
+    public function listAction($userId = NULL) {
+        if($userId == NULL) {
+            $userId = $this->getUser()->getId();
+        }
+
+        $entityManager = $this->get("doctrine.orm.entity_manager");
+        $repository = $entityManager->getRepository(User::class);
+        $user = $repository->find($id);
+
+        $currentUser = $this->getUser();
+        $artists = $user->getArtists();
+
+        return $this->render('GighubApplicationBundle:Artist:list.html.twig', array('artists' => $artists, 'currentUser' => $currentUser));
     }
 
 }

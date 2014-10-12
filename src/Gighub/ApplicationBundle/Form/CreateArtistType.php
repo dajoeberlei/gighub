@@ -23,6 +23,7 @@ class CreateArtistType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'property' => "realName",
+                'by_reference' => false
             ))
             ->add('city', 'text')
             ->add('genre', 'text')

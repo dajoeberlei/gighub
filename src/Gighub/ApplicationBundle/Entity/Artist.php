@@ -51,6 +51,39 @@ class Artist
      */
     protected $genre;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $profilePicture;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->profilePicture
+            ? null
+            : $this->getUploadRootDir().'/'.$this->profilePicture;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->profilePicture
+            ? null
+            : $this->getUploadDir().'/'.$this->profilePicture;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/documents';
+    }
+
 
 
 
@@ -185,6 +218,7 @@ class Artist
      */
     public function removeMember(User $user) {
         $user->removeArtist($this);
+        $this->members->removeElement($user);
     }
 
 

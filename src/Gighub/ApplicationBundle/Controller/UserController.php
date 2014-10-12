@@ -76,9 +76,8 @@ class UserController extends Controller
         if(count($artists)==0) {
             return $this->redirect($this->generateUrl("createArtist"));
         } else {
-            return $this->render('GighubApplicationBundle:Artist:show.html.twig', array("artist" => $artists, "currentUser" => $currentUser));
+            return $this->render('GighubApplicationBundle:Artist:list.html.twig', array("artists" => $artists, "currentUser" => $currentUser));
         }
-
     }
 
 }

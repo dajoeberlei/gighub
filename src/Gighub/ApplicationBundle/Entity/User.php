@@ -211,7 +211,7 @@ class User implements UserInterface
      * @param Artist $artist
      */
     public function removeArtist(Artist $artist) {
-        $this->artists->remove($artist);
+        $this->artists->removeElement($artist);
     }
 
 
