@@ -18,20 +18,23 @@ class ArtistController extends Controller
 
     public function createAction(Request $request)
     {
-        $user = new Artist();
-        $form = $this->createForm(new CreateArtistType(), $user);
+        $currentUser = $this->getUser();
+        $artist = new Artist();
+        $form = $this->createForm(new CreateArtistType(), $artist);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            echo count($artist->getMembers()->get(0)->getArtists());
+            die();
             $entityManager = $this->get("doctrine.orm.entity_manager");
-            $entityManager->persist($user);
+            $entityManager->persist($artist);
             $entityManager->flush();
 
-            return $this->redirect($this->generateUrl('showArtist', array("id" => $user->getId())));
+            return $this->redirect($this->generateUrl('showArtist', array("id" => $artist->getId())));
         }
 
-        return $this->render("GighubApplicationBundle:Artist:create.html.twig", array("form" => $form->createView()));
+        return $this->render("GighubApplicationBundle:Artist:create.html.twig", array("form" => $form->createView(), "currentUser" => $currentUser));
     }
 
     public function showAction($id)

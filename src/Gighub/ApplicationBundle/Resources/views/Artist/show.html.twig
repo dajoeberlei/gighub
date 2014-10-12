@@ -1,5 +1,24 @@
 {% extends '::base.html.twig' %}
 
  {% block content %}
-     Artist: {{ artist.name }}
+     <section class="wrapper">
+     <!-- page start-->
+     <h3><i class="fa fa-angle-right"></i> Artists</h3>
+     <div class="col-lg-4 col-md-4 col-sm-4 mb">
+         <div class="content-panel pn">
+             <div id="spotify">
+                 <div class="col-xs-4 col-xs-offset-8">
+                     <a href="show.html.twig" class="btn btn-sm btn-clear-g">Profile</a>
+                 </div>
+                 <div class="sp-title">
+                     <h3>{{ artist.name }}</h3>
+                 </div>
+                 <div class="play">
+                     <i class="fa fa-play-circle"></i>
+                 </div>
+             </div>
+             <p class="followers"><i class="fa fa-user"></i> SOME TEXT HERE</p>
+         </div>
+     </div>
+     </section>
  {% endblock %}

@@ -46,13 +46,14 @@ class User implements UserInterface
     protected $profilePicture;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $artist;
+     * @ORM\ManyToMany(targetEntity="Artist", inversedBy="members")
+     * @ORM\JoinTable(name="users_artists")
+     **/
+    protected $artists;
 
     public function __construct()
     {
-
+        $this->artists = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -185,18 +186,34 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getArtist()
+    public function getArtists()
     {
-        return $this->artist;
+        return $this->artists;
     }
 
     /**
-     * @param mixed $artist
+     * @param mixed $artists
      */
-    public function setArtist($artist)
+    public function setArtists($artists)
     {
-        $this->artist = $artist;
+        $this->artists = $artists;
     }
+
+
+    /**
+     * @param Artist $artist
+     */
+    public function addArtist(Artist $artist) {
+        $this->artists->add($artist);
+    }
+
+    /**
+     * @param Artist $artist
+     */
+    public function removeArtist(Artist $artist) {
+        $this->artists->remove($artist);
+    }
+
 
 
 }

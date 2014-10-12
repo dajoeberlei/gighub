@@ -71,12 +71,12 @@ class UserController extends Controller
     public function homeAction()
     {
         $currentUser = $this->getUser();
-        $artist = $currentUser->getArtist();
+        $artists = $currentUser->getArtists();
 
-        if(!$artist) {
-            return $this->render('GighubApplicationBundle:Artist:create.html.twig', array("currentUser" => $currentUser));
+        if(count($artists)==0) {
+            return $this->redirect($this->generateUrl("createArtist"));
         } else {
-            return $this->render('GighubApplicationBundle:Artist:show.html.twig', array("artist" => $artist, "currentUser" => $currentUser));
+            return $this->render('GighubApplicationBundle:Artist:show.html.twig', array("artist" => $artists, "currentUser" => $currentUser));
         }
 
     }

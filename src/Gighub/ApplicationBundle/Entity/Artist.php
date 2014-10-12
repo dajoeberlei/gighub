@@ -22,7 +22,7 @@ class Artist
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     protected $name;
 
@@ -32,8 +32,8 @@ class Artist
     protected $artistType = self::ARTIST_BAND;
 
     /**
-     * @ORM\Column(type="integer")
-     */
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="artists")
+     **/
     protected $members;
 
     /**
@@ -56,7 +56,7 @@ class Artist
 
     public function __construct()
     {
-
+        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -172,6 +172,20 @@ class Artist
         $this->members = $members;
     }
 
+    /**
+     * @param User $user
+     */
+    public function addMember(User $user) {
+        $user->addArtist($this);
+        $this->members[] = $user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function removeMember(User $user) {
+        $user->removeArtist($this);
+    }
 
 
 

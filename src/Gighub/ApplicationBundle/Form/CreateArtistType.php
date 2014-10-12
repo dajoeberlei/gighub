@@ -14,11 +14,16 @@ class CreateArtistType extends AbstractType
             ->add('name', 'text')
             ->add('artistType', 'choice', array(
                 'choices' => array(
-                    Artist::ARTIST_BAND => 'band',
-                    Artist::ARTIST_SOLO => 'solo'
+                    Artist::ARTIST_BAND => 'Band / Duo / Group',
+                    Artist::ARTIST_SOLO => 'Solo Artist'
                 )
             ))
-            ->add('members', 'integer')
+            ->add('members', 'entity', array(
+                'class' => 'Gighub\ApplicationBundle\Entity\User',
+                'expanded' => true,
+                'multiple' => true,
+                'property' => "realName",
+            ))
             ->add('city', 'text')
             ->add('genre', 'text')
             ->add('email', 'email')
