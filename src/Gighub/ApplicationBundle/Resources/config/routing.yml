@@ -24,7 +24,7 @@ showArtist:
         defaults: { _controller: GighubApplicationBundle:Artist:show }
 
 uploadProfilePictureForArtist:
-        path:     /artist/upload_profile_picture/{id}
+        path:     /artist/upload_profile_picture/{artist_id}
         defaults: { _controller: GighubApplicationBundle:Artist:uploadProfilePicture }
 
 createUser:

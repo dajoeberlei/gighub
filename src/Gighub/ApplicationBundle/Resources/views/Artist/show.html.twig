@@ -3,22 +3,15 @@
  {% block content %}
      <section class="wrapper">
      <!-- page start-->
-     <h3><i class="fa fa-angle-right"></i> Artist: { artist.name }</h3>
-     <div class="col-lg-4 col-md-4 col-sm-4 mb">
-         <div class="content-panel pn">
-             <div id="spotify">
-                 <div class="col-xs-4 col-xs-offset-8">
-                     <a href="show.html.twig" class="btn btn-sm btn-clear-g">Profile</a>
-                 </div>
-                 <div class="sp-title">
-                     <h3>{{ artist.name }}</h3>
-                 </div>
-                 <div class="play">
-                     <i class="fa fa-play-circle"></i>
-                 </div>
+     <h3><i class="fa fa-anchor"></i>{{ artist.name }} </h3>
+         <div class="white-panel pn">
+             <div class="panel-heading">
+                 <div class="pull-left"><h5><i class="fa fa-tasks"></i> PROFILE PICTURE</h5></div>
+                 <br>
              </div>
-             <p class="followers"><i class="fa fa-user"></i> SOME TEXT HERE</p>
+             <div class="custom-check goleft mt">
+                 <img src="{{ artist.profilePicture.path }}">
+             </div><!-- /table-responsive -->
          </div>
-     </div>
      </section>
  {% endblock %}

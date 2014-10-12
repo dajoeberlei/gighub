@@ -98,15 +98,17 @@ class ArtistController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
+            $artist->setProfilePicture($picture);
             $em->persist($picture);
             $em->flush();
 
-            $artist->setProfilePicture($picture);
 
-            return $this->redirect($this->generateUrl('showArtist', array('artist' => $artist)));
+
+
+            return $this->redirect($this->generateUrl('showArtist', array('id' => $artist->getId())));
         }
 
-        return $this->render("GighubApplicationBundle:Picture:upload.html.twig", array("form" => $form->createView(), "currentUser" => $currentUser, 'artist_id' => $artist->getId()));
+        return $this->render("GighubApplicationBundle:Picture:upload.html.twig", array("form" => $form->createView(), "currentUser" => $currentUser, 'artist' => $artist));
 
     }
 }
