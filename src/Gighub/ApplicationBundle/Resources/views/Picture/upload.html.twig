@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+ {% block content %}
+     <section class="wrapper">
+     <!-- page start-->
+         {% if artist %}
+            <h3>Upload profile picture for {{ artist.name }}</h3>
+         {% endif %}
+     {{ form(form) }}
+     </section>
+ {% endblock %}
