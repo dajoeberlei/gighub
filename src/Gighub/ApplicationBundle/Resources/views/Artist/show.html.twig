@@ -3,14 +3,28 @@
  {% block content %}
      <section class="wrapper">
      <!-- page start-->
-     <h3><i class="fa fa-anchor"></i>{{ artist.name }} </h3>
+     <h2>{{ artist.name }} </h2>
          <div class="white-panel pn">
              <div class="panel-heading">
                  <div class="pull-left"><h5><i class="fa fa-tasks"></i> PROFILE PICTURE</h5></div>
                  <br>
              </div>
              <div class="custom-check goleft mt">
-                 <img src="{{ artist.profilePicture.path }}">
+                 <table>
+                     <tr>
+                         <td>
+                             &nbsp;&nbsp;<img class="fancybox-image" src="/uploads/pictures/{{ artist.profilePicture.path }}" height="180px">
+                         </td>
+                         <td valign="top">
+                             <ul>
+                             {% for user in artist.members %}
+                                <li>{{ user.realname }}</li>
+                             {% endfor %}
+                             </ul>
+                         </td>
+                     </tr>
+                 </table>
+
              </div><!-- /table-responsive -->
          </div>
      </section>

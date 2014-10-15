@@ -23,6 +23,10 @@ showArtist:
         path:     /artist/show/{id}
         defaults: { _controller: GighubApplicationBundle:Artist:show }
 
+listArtist:
+        path:     /artist/list/
+        defaults: { _controller: GighubApplicationBundle:Artist:list }
+
 uploadProfilePictureForArtist:
         path:     /artist/upload_profile_picture/{artist_id}
         defaults: { _controller: GighubApplicationBundle:Artist:uploadProfilePicture }

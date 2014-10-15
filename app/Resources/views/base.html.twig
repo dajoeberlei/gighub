@@ -203,25 +203,31 @@ MAIN SIDEBAR MENU
             <h5 class="centered">{{ currentUser.realname }}</h5>
 
             <li class="mt">
-                <a href="index.html">
+                <a href="/">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="mt">
-                <a href="/user/show/4">
-                    <i class="fa fa-dashboard"></i>
-                    <span>My Profile</span>
-                </a>
-            </li>
             <li class="sub-menu">
-                <a class="active" href="javascript:;" >
-                    <i class="fa fa-cogs"></i>
-                    <span>Components</span>
+                <a href="javascript:;">
+                    <i class="fa fa-dashboard"></i>
+                    <span>My Account</span>
                 </a>
                 <ul class="sub">
-                    <li class="active"><a  href="calendar.html">Calendar</a></li>
-                    <li><a  href="todo_list.html">Todo List</a></li>
+                    <li><a  href="/user/show/{{ currentUser.id }}">My Profile</a></li>
+                    <li><a  href="/artist/list">My Settings</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-group"></i>
+                    <span>My Artists</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="/artist/list">Overview</a></li>
+                    {% for artist in currentUser.artists %}
+                    <li><a  href="/artist/show/{{ artist.id }}">{{ artist.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </li>
 
@@ -246,16 +252,6 @@ MAIN CONTENT
 </section><!-- /MAIN CONTENT -->
 
 
-<!--footer start-->
-<footer class="site-footer">
-    <div class="text-center">
-        2014 - Dajo Eberlei
-        <a href="calendar.html#" class="go-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-    </div>
-</footer>
-<!--footer end-->
 </section>
 {% endblock body %}
 <!-- js placed at the end of the document so the pages load faster -->
